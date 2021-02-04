@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html style="background-color: #06090f;">
+    <title>Engine Manager</title>
+
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <style>
+        body {
+            color: white;
+        }
+    </style>
+
+    <body>
+            Engine path:
+            <input type="file" id="engine_path">
+
+
+            <!-- Go command options -->
+            <div style="margin-top: 20px;">
+                <div>
+                    <input type="radio" id="depth" name="go_command" value="depth" checked>
+                    <label for="depth">Depth:</label>
+                    <input style="width: 30px;" type="number" id="depth_val" value="5">
+                </div>
+    
+                <div style="margin-top: 10px;">
+                    <input type="radio" id="movetime" name="go_command" value="movetime">
+                    <label for="movetime">Time per move:</label>
+                    <input style="width: 40px;" type="number" id="movetime_val" value="10"> seconds
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <input type="radio" id="blitz" name="go_command" value="blitz">
+                    <label for="blitz">Blitz</label>
+                    <p>
+                        Base: 
+                        <input style="width: 40px;" type="number" id="blitz_min_val" value="3"> minutes
+                        <input style="width: 40px;" type="number" id="blitz_sec_val" value="0"> seconds
+                    </p>
+
+                    <p>
+                        Bonus per move:
+                        <input style="width: 40px;" type="number" id="blitz_bonus_sec_val" value="0"> seconds
+                    </p>
+                    
+                </div>
+            </div>
+
+            <button style="margin-top: 10px; margin-left: 180px;" onclick="createConfig ()">Ok</button>
+
+
+        </div>
+        
+    </body>
+
+    <script src="create_config.js"></script>
+</html>

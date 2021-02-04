@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html style="background-color: #06090f;">
+    <title>Logs</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script>window.$ = window.jQuery = require('jquery');</script>
+
+
+    <body>
+        <p style="color: white;" id="logs">
+        </p>
+    </body style="overflow: hidden;">
+    <script>
+        var fs = require ('fs')
+        function printLog () {
+            fs.readFile(('log.txt'), 'utf-8', (err, data) => {
+                data_str = data.replace(/\n/g, "<br />");
+                $('#logs').html(data_str)
+                window.scrollTo(0,document.body.scrollHeight);
+            });
+        }
+
+        window.setInterval (printLog, 30);
+    </script>
+</html>

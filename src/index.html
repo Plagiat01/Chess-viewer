@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html style="background-color: #06090f;">
+  <title>GAiA Chess</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
+    integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU"
+    crossorigin="anonymous"
+  >
+
+  <script>window.$ = window.jQuery = require('jquery');</script>
+
+  <script 
+    src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+    integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
+    crossorigin="anonymous">
+  </script>
+
+  
+  <script src="js/chess.js"></script>
+
+  <style>
+    .highlight {
+      box-shadow: inset 0 0 3px 3px yellow;
+    }
+  </style>
+
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Chess GUI</title>
+  </head>
+
+  <body class="large-2">
+    <div id="board" style="width: 500px; margin-left: 10px;"></div>
+    <p style="margin-left: 10px;">
+      <button onclick="getAgentBestMove()" id="engine_btn">Engine</button>
+      <button onclick="demo()" id="demo_btn">Demo</button>
+    </p>
+    
+    <p style="margin-left: 10px;">
+      <input type="text" id="fen" size="57" spellcheck="false">
+    </p>
+    
+    <p>
+      <div id="pgn" style="margin-top: 20px; color: #fff; margin-left: 10px;"></div>
+    </p>
+    
+  </body>
+
+  <script src="js/chessboard.js"></script>
+  <script src="js/engine_move.js"></script>
+  
+
+</html>
