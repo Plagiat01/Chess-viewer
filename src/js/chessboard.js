@@ -180,6 +180,8 @@ $("#fen").on('keyup', function (e) {
             game = new Chess ($('#fen').val())
             board.position(game.fen())
             startpos = game.fen()
+            move_list = []
+            undo_moves = []
         }
 
         updateStatus()

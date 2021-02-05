@@ -1,9 +1,11 @@
 const remote = require('electron').remote
+const user_dir = remote.app.getPath('userData')
+
 var fs = require('fs');
 
 function createConfig () {
 
-   var path = "Engines/ViCTORIA"
+   var path = "/Users/gaetanserre/Documents/Projets/Chess/Engines/maia-1900/maia"
 
    try {
       path = document.getElementById('engine_path').files[0].path
@@ -16,6 +18,10 @@ function createConfig () {
    switch ($('input[name=go_command]').filter(':checked').val()) {
       case 'depth':
          go_command = "go depth " + $('#depth_val').val()
+         break
+
+      case 'nodes':
+         go_command = "go nodes " + $('#nodes_val').val()
          break
       
       case 'movetime':
@@ -50,7 +56,7 @@ function createConfig () {
       }
    }
 
-   fs.writeFileSync ('config_engine.json', JSON.stringify (config_json))
+   fs.writeFileSync (user_dir+'/config_engine.json', JSON.stringify (config_json))
 
    remote.getCurrentWindow().close()
 }

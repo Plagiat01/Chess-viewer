@@ -1,6 +1,5 @@
 const { app, Menu, BrowserWindow } = require('electron')
 
-
 const background_color = '#06090f'
 
 
@@ -21,7 +20,7 @@ function createWindow () {
 
     const template = [
         {
-            label: 'Game',
+            label: 'GAiA',
             submenu: [
                 {
                     label: 'New Game',
@@ -38,6 +37,11 @@ function createWindow () {
                     label: 'Paste',
                     accelerator: "CmdOrCtrl+V",
                     selector: "paste:"
+                },
+                {
+                    label: 'Quit',
+                    accelerator: "CmdOrCtrl+Q",
+                    click () { app.quit() }
                 }
           ]
         },
@@ -60,7 +64,7 @@ function createWindow () {
                     click() {
                         const engineWindow = new BrowserWindow({
                             width: 400,
-                            height: 300,
+                            height: 330,
                             title: 'Engine Manager',
                             backgroundColor: background_color,
                             webPreferences: {
@@ -68,6 +72,7 @@ function createWindow () {
                                 enableRemoteModule: true
                               }
                           })
+
                         engineWindow.loadFile('src/engines/manage.html')
                     }
                 },

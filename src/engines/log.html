@@ -10,12 +10,13 @@
         </p>
     </body style="overflow: hidden;">
     <script>
+        const user_dir = require('electron').remote.app.getPath('userData')
         var fs = require ('fs')
         function printLog () {
-            fs.readFile(('log.txt'), 'utf-8', (err, data) => {
+            fs.readFile((user_dir+'/log.txt'), 'utf-8', (err, data) => {
                 data_str = data.replace(/\n/g, "<br />");
                 $('#logs').html(data_str)
-                window.scrollTo(0,document.body.scrollHeight);
+                //window.scrollTo(0,document.body.scrollHeight);
             });
         }
 
