@@ -1,4 +1,4 @@
-async function getAgentBestMove () {
+async function playAgentBestMove () {
     $('#engine_btn').prop('disabled', true)
 
     var agent = require ('./engines/agent').agent
@@ -16,8 +16,20 @@ async function demo () {
     $('#demo_btn').prop('disabled', true)
 
     while (!game.game_over()) {
-        await getAgentBestMove ()
+        await playAgentBestMove ()
     }
 
     $('#demo_btn').prop('disabled', false)
 }
+
+
+$('#engine_move').on('change', () => {
+
+    if ($('#engine_move').is(':checked')) {
+        engine_turn = game.turn()
+        playAgentBestMove ()
+    }
+
+    else
+        engine_turn = null
+})

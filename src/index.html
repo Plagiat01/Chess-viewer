@@ -35,8 +35,9 @@
   <body class="large-2">
     <div id="board" style="width: 500px; margin-left: 10px;"></div>
     <p style="margin-left: 10px;">
-      <button onclick="getAgentBestMove()" id="engine_btn">Engine</button>
-      <button onclick="demo()" id="demo_btn">Demo</button>
+        <input type="checkbox" id="engine_move" name="engine_move">
+        <label for="engine_move" style="color: white;">Engine</label>
+      <button style="margin-left: 10px;" onclick="demo()" id="demo_btn">Demo</button>
     </p>
     
     <p style="margin-left: 10px;">

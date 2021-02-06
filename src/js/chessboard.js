@@ -14,6 +14,7 @@ var move_list = []
 var undo_moves = []
 var startpos = ""
 var is_searching = false
+var engine_turn = null
 
 function onDragStart (source, piece, position, orientation) {
   // do not pick up pieces if the game is over
@@ -53,9 +54,10 @@ function onSnapEnd () {
 }
 
 function updateStatus () {
-  $fen.val(game.fen())
+  $fen.val (game.fen())
   var pgn_array = pgnToArray(pgn)
-  writePGN(pgn_array, pgnToArray(game.pgn()).length-1)
+  writePGN (pgn_array, pgnToArray(game.pgn()).length-1)
+  checkForEngineMove ()
 }
 
 var config = {
@@ -139,6 +141,12 @@ function pushBackMove () {
     if (undo_moves.length > 0) {
         var move = undo_moves.pop()
         playMove(move)
+    }
+}
+
+function checkForEngineMove () {
+    if (engine_turn == game.turn()) {
+        playAgentBestMove ()
     }
 }
 

@@ -4,8 +4,6 @@ const { waitForFirst } = require ('wait-for-event')
 const user_dir = require('electron').remote.app.getPath('userData')
 var fs = require('fs');
 
-console.log(user_dir)
-
 function writeInLog (command) {
     fs.appendFile (user_dir+'/log.txt', command, (err) => {
 
