@@ -22,6 +22,11 @@ async function demo () {
     $('#demo_btn').prop('disabled', false)
 }
 
+function uncheckEngineButton () {
+    $('#engine_move').prop('checked', false)
+    engine_turn = null
+}
+
 
 $('#engine_move').on('change', () => {
 

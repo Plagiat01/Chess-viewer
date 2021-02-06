@@ -155,6 +155,8 @@ function checkForEngineMove () {
 document.addEventListener('keyup', (e) => {
     if (e.code === "ArrowLeft") {
 
+        uncheckEngineButton ()
+
         undoMove()
 
         var last_move = getLastMove()
@@ -166,6 +168,7 @@ document.addEventListener('keyup', (e) => {
     } 
 
     else if (e.code === "ArrowRight") {
+        uncheckEngineButton ()
         pushBackMove ()
     }
     
