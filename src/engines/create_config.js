@@ -3,9 +3,20 @@ const user_dir = remote.app.getPath('userData')
 
 var fs = require('fs');
 
+
+function parseJson () {
+   var path = "/Users/gaetanserre/Documents/Projets/Chess/Engines/maia-1900/maia"
+
+   if (fs.existsSync(user_dir+'/config_engine.json')) { 
+      var data = JSON.parse(fs.readFileSync(user_dir+'/config_engine.json'))
+      path = data['engine_path']
+   }
+   return path;
+}
+
 function createConfig () {
 
-   var path = "/Users/gaetanserre/Documents/Projets/Chess/Engines/maia-1900/maia"
+   var path = parseJson ()
 
    try {
       path = document.getElementById('engine_path').files[0].path
