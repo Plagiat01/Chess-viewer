@@ -1,5 +1,5 @@
 async function playAgentBestMove () {
-    $('#engine_btn').prop('disabled', true)
+    $('#engine_move').prop('disabled', true)
 
     var agent = require ('./engines/agent').agent
     
@@ -9,7 +9,7 @@ async function playAgentBestMove () {
     playMove(best_move, true)
 
     is_searching = false
-    $('#engine_btn').prop('disabled', false)
+    $('#engine_move').prop('disabled', false)
 }
 
 async function demo () {
