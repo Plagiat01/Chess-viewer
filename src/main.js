@@ -66,6 +66,7 @@ function createWindow () {
             submenu: [
                 {
                     label: 'Manage Engine',
+                    accelerator: "CmdOrCtrl+M",
                     click() {
                         const engineWindow = new BrowserWindow({
                             width: 400,
@@ -83,6 +84,7 @@ function createWindow () {
                 },
                 {
                     label: 'Show Logs',
+                    accelerator: "CmdOrCtrl+L",
                     click () {
                         const LogWindow = new BrowserWindow({
                             width: 800,
