@@ -39,6 +39,11 @@ function createWindow () {
                     selector: "paste:"
                 },
                 {
+                    label: 'Select All',
+                    accelerator: 'CmdOrCtrl+A',
+                    role: "selectAll"
+                },
+                {
                     label: 'Quit',
                     accelerator: "CmdOrCtrl+Q",
                     click () { app.quit() }
