@@ -4,22 +4,28 @@
     <link rel="stylesheet" href="../css/style.css">
     <script>window.$ = window.jQuery = require('jquery');</script>
 
-
     <body>
         <p style="color: white;" id="logs">
         </p>
     </body style="overflow: hidden;">
+    
     <script>
         const user_dir = require('electron').remote.app.getPath('userData')
         var fs = require ('fs')
+        var scroll = false
         function printLog () {
             fs.readFile((user_dir+'/log.txt'), 'utf-8', (err, data) => {
                 data_str = data.replace(/\n/g, "<br />");
                 $('#logs').html(data_str)
-                //window.scrollTo(0,document.body.scrollHeight);
+                if (scroll)
+                  window.scrollTo(0,document.body.scrollHeight);
             });
         }
-
         window.setInterval (printLog, 30);
+
+
+        document.addEventListener('keyup', (e) => {
+          if (e.code === "KeyS") scroll = !scroll
+        });
     </script>
 </html>

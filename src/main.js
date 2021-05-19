@@ -12,6 +12,7 @@ function createWindow () {
       backgroundColor: background_color,
       webPreferences: {
         nodeIntegration: true,
+        contextIsolation: false,
         enableRemoteModule: true
       }
     })
@@ -75,6 +76,7 @@ function createWindow () {
                             backgroundColor: background_color,
                             webPreferences: {
                                 nodeIntegration: true,
+                                contextIsolation: false,
                                 enableRemoteModule: true
                               }
                           })
@@ -93,6 +95,7 @@ function createWindow () {
                             backgroundColor: background_color,
                             webPreferences: {
                                 nodeIntegration: true,
+                                contextIsolation: false,
                                 enableRemoteModule: true
                               }
                           })
