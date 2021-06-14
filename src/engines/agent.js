@@ -21,6 +21,9 @@ function deleteLog () {
 }
 
 
+var btime = 0
+var wtime = 0
+
 class Agent {
     constructor (nb) {
         this.nb = nb
@@ -51,8 +54,8 @@ class Agent {
         if (config['go_command'] === 'blitz') {
 
             if (this.not_init_time) {
-                this.wtime = parseInt (config['time'])
-                this.btime = parseInt (config['time'])
+                wtime = parseInt (config['time'])
+                btime = parseInt (config['time'])
                 this.inc = parseInt (config['inc'])
                 this.not_init_time = false
             }
@@ -69,7 +72,7 @@ class Agent {
 
     async buildGoCommand () {
         if (this.blitz) {
-            return "go wtime " + this.wtime.toString() + " btime " + this.btime.toString() +
+            return "go wtime " + wtime.toString() + " btime " + btime.toString() +
                          " winc " + this.inc.toString() + " binc " + this.inc.toString()
         } 
         
@@ -165,8 +168,8 @@ class Agent {
 
         var time = performance.now () - start
         
-        if (white) this.wtime = Math.floor(this.wtime - time + this.inc)
-        else this.btime = Math.floor(this.btime - time + this.inc)
+        if (white) wtime = Math.floor(wtime - time + this.inc)
+        else btime = Math.floor(btime - time + this.inc)
 
         return this.strMoveToMoveObject(this.bestmove)
     }
