@@ -71,7 +71,7 @@ function createWindow () {
                     click() {
                         const engineWindow = new BrowserWindow({
                             width: 400,
-                            height: 330,
+                            height: 380,
                             title: 'Engine Manager',
                             backgroundColor: background_color,
                             webPreferences: {

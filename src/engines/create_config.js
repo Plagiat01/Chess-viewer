@@ -4,12 +4,12 @@ const user_dir = remote.app.getPath('userData')
 var fs = require('fs');
 
 
-function getPathFromJson () {
+function getPathFromJson (id) {
    var path = "/Users/gaetanserre/Documents/Projets/Chess/Engines/maia-1900/maia"
 
    if (fs.existsSync(user_dir+'/config_engine.json')) { 
       var data = JSON.parse(fs.readFileSync(user_dir+'/config_engine.json'))
-      path = data['engine_path']
+      path = data[id]
       console.log(path)
       console.log(data)
    }
@@ -18,10 +18,12 @@ function getPathFromJson () {
 
 function createConfig () {
 
-   var path = getPathFromJson ()
+   var path1 = getPathFromJson ('engine1_path')
+   var path2 = getPathFromJson ('engine2_path')
 
    try {
-      path = document.getElementById('engine_path').files[0].path
+      path1 = document.getElementById('engine1_path').files[0].path
+      path2 = document.getElementById('engine2_path').files[0].path
    } catch {}
 
    var go_command = ''
@@ -56,13 +58,15 @@ function createConfig () {
    }
 
    config_json = {
-      path: path,
+      path1: path1,
+      path2: path2,
       go_command: go_command     
    }
 
    if (go_command === 'blitz') {
       config_json = {
-         path: path,
+         path1: path1,
+         path2: path2,
          go_command: go_command,
          time: time_str,
          inc: inc_str

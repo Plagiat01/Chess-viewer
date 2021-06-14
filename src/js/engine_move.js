@@ -1,8 +1,10 @@
+var agent1 = require ('./engines/agent').agent1
+var agent2 = require ('./engines/agent').agent2
+var agent = agent1
+
 async function playAgentBestMove () {
     $('#engine_move').prop('disabled', true)
 
-    var agent = require ('./engines/agent').agent
-    
     agent.setPosition (startpos, move_list)
     is_searching = true
     var best_move = await agent.getBestMove (game.turn() === 'w')
@@ -10,6 +12,11 @@ async function playAgentBestMove () {
 
     is_searching = false
     $('#engine_move').prop('disabled', false)
+
+    if (agent.nb == 1)
+      agent = agent2
+    else
+      agent = agent1
 }
 
 async function demo () {

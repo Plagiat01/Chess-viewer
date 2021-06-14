@@ -22,7 +22,8 @@ function deleteLog () {
 
 
 class Agent {
-    constructor () {
+    constructor (nb) {
+        this.nb = nb
         this.not_init_time = true
         this.getConfig ("")
        
@@ -35,8 +36,9 @@ class Agent {
     async getConfig (old_path) {
         var config = JSON.parse(fs.readFileSync(user_dir+'/config_engine.json'))
 
-        if (config['path'] !== old_path) {
-            this.path = config['path']
+        if (config['path' + this.nb] !== old_path) {
+            console.log('path' + this.nb)
+            this.path = config['path' + this.nb]
 
             try {
                 this.engine_process.kill()
@@ -170,5 +172,7 @@ class Agent {
     }
 }
 
-var agent = new Agent ()
-exports.agent = agent
+var agent1 = new Agent (1)
+var agent2 = new Agent (2)
+exports.agent1 = agent1
+exports.agent2 = agent2
