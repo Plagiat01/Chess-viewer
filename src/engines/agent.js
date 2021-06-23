@@ -26,6 +26,8 @@ var wtime = 0
 
 class Agent {
     constructor (nb) {
+        this.score = 0
+        this.mate = false
         this.nb = nb
         this.not_init_time = true
         this.getConfig ("")
@@ -40,7 +42,6 @@ class Agent {
         var config = JSON.parse(fs.readFileSync(user_dir+'/config_engine.json'))
 
         if (config['path' + this.nb] !== old_path) {
-            console.log('path' + this.nb)
             this.path = config['path' + this.nb]
 
             try {
@@ -88,7 +89,29 @@ class Agent {
 
             var data_str = data.toString()
 
-            if (data_str.includes ('bestmove')) {
+            if (data_str.includes('score')) {
+                while (!data_str.startsWith('score')) {
+                    data_str = data_str.substring(1)
+                }
+                data_str = data_str.substring(6, data_str.length)
+
+                if (data_str.startsWith('cp')) {
+                  this.mate = false
+                  data_str = data_str.substring(3, data_str.length)
+                } else {
+                  this.mate = true
+                  data_str = data_str.substring(5, data_str.length)
+                }
+                
+                this.score = ""
+                while (!data_str.startsWith(' ') && !data_str.startsWith('\n')) {
+                    this.score += data_str[0]
+                    data_str = data_str.substring(1)
+                }
+                console.log(this.score)
+            }
+
+            if (data_str.includes('bestmove')) {
 
                 while (!data_str.startsWith('bestmove')) {
                     data_str = data_str.substring(1)

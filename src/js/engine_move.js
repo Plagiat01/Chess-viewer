@@ -8,11 +8,29 @@ async function playAgentBestMove () {
     agent.setPosition (startpos, move_list)
     is_searching = true
     var best_move = await agent.getBestMove (game.turn() === 'w')
-    playMove(best_move, true)
-
+    
     is_searching = false
     $('#engine_move').prop('disabled', false)
 
+    let score = agent.score
+    if (game.turn === 'b') {
+      if (score[0] === '-') {
+        score.substring(1)
+        score = '+' + score
+      }
+      else {
+        score = '-' + score
+      }
+    }
+
+    if (agent.mate) {
+      score = "mate " + score
+    }
+    
+    score_list.push(score)
+    playMove(best_move, true)
+    printScore()
+      
     if (agent.nb == 1)
       agent = agent2
     else

@@ -12,6 +12,8 @@ var squareClass = 'square-55d63'
 var pgn = ""
 var move_list = []
 var undo_moves = []
+var score_list = []
+var undo_scores = []
 var startpos = ""
 var is_searching = false
 var engine_turn = null
@@ -41,6 +43,7 @@ function onDrop (source, target) {
 
   move_list.push(move)
   undo_moves = []
+  undo_scores = []
 
   highlightMove(move)
   pgn = game.pgn()
@@ -112,6 +115,7 @@ function playMove (move, reset=false, sloppy=false) {
     move_list.push(g_move)
     if (reset) {
         undo_moves = []
+        undo_scores = []
         pgn = game.pgn()
     }
 
@@ -133,7 +137,9 @@ function undoMove () {
     if(undo_move !== null) {
         undo_moves.push (undo_move)
         move_list.pop()
+        undo_scores.push(score_list.pop())
     }
+    printScore()
     removeHighlight()
 }
 
@@ -141,6 +147,8 @@ function pushBackMove () {
     if (undo_moves.length > 0) {
         var move = undo_moves.pop()
         playMove(move)
+        score_list.push(undo_scores.pop())
+        printScore()
     }
 }
 
@@ -148,6 +156,10 @@ function checkForEngineMove () {
     if (engine_turn == game.turn()) {
         playAgentBestMove ()
     }
+}
+
+function printScore () {
+  $('#score').html(score_list[score_list.length-1])
 }
 
 // Listeners
@@ -193,6 +205,8 @@ $("#fen").on('keyup', function (e) {
             startpos = game.fen()
             move_list = []
             undo_moves = []
+            score_list = []
+            undo_scores = []
         }
 
         updateStatus()
