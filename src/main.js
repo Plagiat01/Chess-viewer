@@ -25,6 +25,7 @@ function createWindow () {
             submenu: [
                 {
                     label: 'New Game',
+                    accelerator: "CmdOrCtrl+N",
                     click() {
                         mainWindow.reload()
                     }
