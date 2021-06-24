@@ -12,11 +12,14 @@ async function playAgentBestMove () {
     is_searching = false
     $('#engine_move').prop('disabled', false)
 
+    console.log(game.turn())
+    console.log(agent.score)
+    console.log(agent.score[0]==="-")
+
     let score = agent.score
-    if (game.turn === 'b') {
+    if (game.turn() === 'b') {
       if (score[0] === '-') {
-        score.substring(1)
-        score = '+' + score
+        score = score.substring(1)
       }
       else {
         score = '-' + score

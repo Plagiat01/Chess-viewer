@@ -108,7 +108,6 @@ class Agent {
                     this.score += data_str[0]
                     data_str = data_str.substring(1)
                 }
-                console.log(this.score)
             }
 
             if (data_str.includes('bestmove')) {
