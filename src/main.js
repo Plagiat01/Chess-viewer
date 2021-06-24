@@ -57,6 +57,7 @@ function createWindow () {
             submenu: [
                 {
                     label: 'Toggle Developper Tools',
+                    accelerator: 'CmdOrCtrl+T',
                     click() {
                         mainWindow.webContents.toggleDevTools()
                     }
