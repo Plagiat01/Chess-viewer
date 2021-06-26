@@ -8,13 +8,11 @@ async function playAgentBestMove () {
     agent.setPosition (startpos, move_list)
     is_searching = true
     var best_move = await agent.getBestMove (game.turn() === 'w')
+    var ponder = agent.ponder
+    console.log(ponder)
     
     is_searching = false
     $('#engine_move').prop('disabled', false)
-
-    console.log(game.turn())
-    console.log(agent.score)
-    console.log(agent.score[0]==="-")
 
     let score = agent.score
     if (game.turn() === 'b') {
@@ -33,6 +31,10 @@ async function playAgentBestMove () {
     score_list.push(score)
     playMove(best_move, true)
     printScore()
+    if (ponder !== "") {
+      highlightPonder(game.move (ponder, {sloppy: true}))
+      game.undo()
+    }
       
     if (agent.nb == 1)
       agent = agent2

@@ -76,12 +76,23 @@ var config = {
 
 function highlightMove (move) {
     removeHighlight()
+    removeHighlightPonder()
     $board.find('.square-' + move.from).addClass('highlight')
     $board.find('.square-' + move.to).addClass('highlight')
 }
 
 function removeHighlight () {
     $board.find('.' + squareClass).removeClass('highlight')
+}
+
+function highlightPonder (move) {
+  removeHighlightPonder()
+  $board.find('.square-' + move.from).addClass('highlight-ponder')
+  $board.find('.square-' + move.to).addClass('highlight-ponder')
+}
+
+function removeHighlightPonder () {
+  $board.find('.' + squareClass).removeClass('highlight-ponder')
 }
 
 function pgnToArray (PGN) {

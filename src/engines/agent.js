@@ -125,6 +125,22 @@ class Agent {
 
                 this.is_searching[0].emit('done')
             }
+
+            if (data_str.includes('ponder')) {
+
+              while (!data_str.startsWith('ponder')) {
+                  data_str = data_str.substring(1)
+              }
+
+              data_str = data_str.substring(7, data_str.length)
+              this.ponder = ""
+              while (!data_str.startsWith(' ') && !data_str.startsWith('\n')) {
+                  this.ponder += data_str[0]
+                  data_str = data_str.substring(1)
+              }
+
+              this.is_searching[0].emit('done')
+          }
           });
           
         this.engine_process.stderr.on('data', (data) => {
