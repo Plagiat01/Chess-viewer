@@ -220,6 +220,10 @@ function printScore () {
   $('#score').html(score_list[score_list.length-1])
 }
 
+function printDepth (depth) {
+  $('#depth').html('depth: ' + depth)
+}
+
 // Listeners
 
 document.addEventListener('keydown', (e) => {
@@ -250,8 +254,6 @@ document.addEventListener('keydown', (e) => {
         console.log(move_list)
         console.log(undo_moves)
     }
-
-    console.log(e.code)
 });
 
 $("#fen").on('keyup', function (e) {

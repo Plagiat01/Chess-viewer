@@ -35,6 +35,8 @@ async function playAgentBestMove () {
       highlightPonder(game.move (ponder, {sloppy: true}))
       game.undo()
     }
+
+    printDepth(agent.depth)
       
     if (agent.nb == 1)
       agent = agent2

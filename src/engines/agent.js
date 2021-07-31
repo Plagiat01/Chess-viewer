@@ -89,11 +89,28 @@ class Agent {
 
             var data_str = data.toString()
 
+            if (data_str.includes('depth')) {
+              while (!data_str.startsWith('depth')) {
+                  data_str = data_str.substring(1)
+              }
+              data_str = data_str.substring(6, data_str.length)
+
+              this.depth = ""
+              while (!data_str.startsWith(' ') && !data_str.startsWith('\n')) {
+                this.depth += data_str[0]
+                data_str = data_str.substring(1)
+              }
+            }
+
+            data_str = data.toString()
+
             if (data_str.includes('score')) {
                 while (!data_str.startsWith('score')) {
                     data_str = data_str.substring(1)
                 }
                 data_str = data_str.substring(6, data_str.length)
+
+                
 
                 if (data_str.startsWith('cp')) {
                   this.mate = false
