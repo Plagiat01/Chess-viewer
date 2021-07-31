@@ -222,7 +222,7 @@ function printScore () {
 
 // Listeners
 
-document.addEventListener('keyup', (e) => {
+document.addEventListener('keydown', (e) => {
     if (e.code === "ArrowLeft") {
 
         uncheckEngineButton ()
