@@ -18,7 +18,22 @@ var startpos = ""
 var is_searching = false
 var engine_turn = null
 
+
+function remove_possible_moves () {
+  $board.find('.' + squareClass).removeClass('white-grey')
+  $board.find('.' + squareClass).removeClass('black-grey')
+}
+
+function highlight_possible_moves (square) {
+  var $square = $board.find('.square-' + square)
+  if ($square.hasClass('black-3c85d'))
+    $square.addClass('black-grey')
+  else
+    $square.addClass('white-grey')
+}
+
 function onDragStart (source, piece, position, orientation) {
+  console.log ("test")
   // do not pick up pieces if the game is over
   if (game.game_over()) return false
 
@@ -28,6 +43,32 @@ function onDragStart (source, piece, position, orientation) {
       is_searching) {
     return false
   }
+}
+
+function onMouseoverSquare (square, piece) {
+  // get list of possible moves for this square
+  var moves = game.moves({
+    square: square,
+    verbose: true
+  })
+
+  console.log(moves)
+
+  // exit if there are no moves available for this square
+  if (moves.length === 0) return
+
+  // highlight the square they moused over
+  highlight_possible_moves(square)
+
+  // highlight the possible squares for this piece
+  for (var i = 0; i < moves.length; i++) {
+    highlight_possible_moves(moves[i].to)
+  }
+}
+
+
+function onMouseoutSquare (square, piece) {
+  remove_possible_moves()
 }
 
 function onDrop (source, target) {
@@ -63,9 +104,15 @@ function updateStatus () {
   checkForEngineMove ()
 }
 
+function test () {
+  console.log ("test")
+}
+
 var config = {
   draggable: true,
   position: 'start',
+  /* onMouseoutSquare: onMouseoutSquare,
+  onMouseoverSquare: onMouseoverSquare, */
   onDragStart: onDragStart,
   onDrop: onDrop,
   onSnapEnd: onSnapEnd
