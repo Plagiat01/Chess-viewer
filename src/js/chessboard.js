@@ -33,7 +33,6 @@ function highlight_possible_moves (square) {
 }
 
 function onDragStart (source, piece, position, orientation) {
-  console.log ("test")
   // do not pick up pieces if the game is over
   if (game.game_over()) return false
 
@@ -104,10 +103,6 @@ function updateStatus () {
   checkForEngineMove ()
 }
 
-function test () {
-  console.log ("test")
-}
-
 var config = {
   draggable: true,
   position: 'start',
@@ -133,13 +128,13 @@ function removeHighlight () {
 }
 
 function highlightPonder (move) {
-  removeHighlightPonder()
+  /* removeHighlightPonder()
   $board.find('.square-' + move.from).addClass('highlight-ponder')
-  $board.find('.square-' + move.to).addClass('highlight-ponder')
+  $board.find('.square-' + move.to).addClass('highlight-ponder') */
 }
 
 function removeHighlightPonder () {
-  $board.find('.' + squareClass).removeClass('highlight-ponder')
+  /* $board.find('.' + squareClass).removeClass('highlight-ponder') */
 }
 
 function pgnToArray (PGN) {
