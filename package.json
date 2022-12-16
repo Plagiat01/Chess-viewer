@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": ">=13.6.6",
-    "jquery": "^3.6.0",
-    "wait-for-event": "^2.0.1"
+    "electron": "13.6.6",
+    "jquery": "3.6.0",
+    "wait-for-event": "2.0.1"
   }
 }
